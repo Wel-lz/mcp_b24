@@ -311,6 +311,8 @@ function extractRows<T>(result: unknown): T[] {
     if (Array.isArray(obj.items)) return obj.items as T[];
     if (Array.isArray(obj.list)) return obj.list as T[];
     if (Array.isArray(obj.result)) return obj.result as T[];
+    // tasks.task.list nests rows under `tasks` (e.g. { tasks: [...] }).
+    if (Array.isArray(obj.tasks)) return obj.tasks as T[];
   }
   return [] as T[];
 }
